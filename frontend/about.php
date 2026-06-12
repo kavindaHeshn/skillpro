@@ -1,590 +1,688 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Us - SkillPro Institute</title>
-   
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
-    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
-   
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-            font-family: 'Roboto', 'Arial', sans-serif;
-            line-height: 1.6;
-            color: #0f0101ff;
-            background: #231e0c37;
-        }
-        .container {
-            width: 90%;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        /* Header & Navigation */
-        header {
-            background:#0f0101ff;
-            backdrop-filter: blur(10px);
-            position: fixed;
-            top: 0;
-            width: 100%;
-            z-index: 1000;
-            padding: 15px 0;
-            transition: all 0.3s ease;
-            box-shadow: 0 2px 10px rgba(187, 16, 16, 0.94);
-        }
-        header.scrolled {
-            background: rgba(229, 104, 15, 1);
-            padding: 10px 0;
-        }
-        .nav-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-        }
-        .logo {
-            display: flex;
-            align-items: center;
-            color: white;
-            font-size: 1.8em;
-            font-weight: 700;
-            text-decoration: none;
-        }
-        .logo img {
-            height: 60px;
-            margin-right: 10px;
-            border-radius: 8px;
-        }
-        nav ul {
-            list-style: none;
-            display: flex;
-            gap: 25px;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-        nav ul li a {
-            color: white;
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 1.1em;
-            padding: 8px 0;
-            position: relative;
-            transition: color 0.3s ease;
-            white-space: nowrap;
-        }
-        nav ul li a::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 3px;
-            bottom: 0;
-            left: 50%;
-            background: #bc3f0aff;
-            transition: all 0.3s ease;
-            transform: translateX(-50%);
-        }
-        nav ul li a:hover::after,
-        nav ul li a.active::after {
-            width: 100%;
-        }
-        nav ul li a:hover,
-        nav ul li a.active {
-            color: #e35909ff;
-        }
-        .login-btn {
-            background: #e35909ff;
-            color: white !important;
-            padding: 10px 20px;
-            border-radius: 50px;
-            font-weight: 600;
-            transition: background 0.3s;
-        }
-        .login-btn:hover {
-            background: #e55a00;
-        }
-        .login-btn::after { display: none; }
-        .hamburger {
-            display: none;
-            flex-direction: column;
-            cursor: pointer;
-        }
-        .hamburger span {
-            width: 25px;
-            height: 3px;
-            background: white;
-            margin: 4px 0;
-            transition: 0.3s;
-        }
-       .contact-bar {
-            background: #004d99;
-            color: white;
-            padding: 12px 0;
-            text-align: center;
-            font-size: 1.1em;
-            z-index: 999;
-        }
-        .contact-bar .container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 20px;
-        }
-        .contact-bar a {
-            color: white;
-            font-size: 1.6em;
-            margin: 0 10px;
-            transition: color 0.3s;
-            text-decoration: none;
-        }
-        .contact-bar a:hover { color: #0a1113ff; }
-        .contact-bar .phone-text { font-weight: bold; }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>About Us – SkillPro Institute</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-        /* About Hero Section */
-        .about-hero {
-            background: linear-gradient(rgba(0, 0, 0, 0.26), rgba(0, 0, 0, 0.33)),
-                        url('../photo/skill.png');
-            background-size: cover;
-            background-position: center;
-            color: white;
-            text-align: center;
-            padding: 160px 20px 100px;
-        }
-        .about-hero h2 { font-size: 3.2em; margin-bottom: 20px; }
+    :root {
+      --navy:   #0D2137;
+      --gold:   #C9932A;
+      --cream:  #FAF7F2;
+      --slate:  #4A5C6E;
+      --light:  #E8EFF5;
+      --white:  #FFFFFF;
+      --text:   #1A2B3C;
+    }
 
-        /* About Content Section */
-        #about-content {
-            padding: 80px 0;
-            background-color: #231e0c37;
-        }
-        #about-content .header {
-            background-color: #e55a00;
-            color: white;
-            padding: 20px;
-            text-align: center;
-            border-radius: 8px;
-            margin-bottom: 40px;
-        }
-        #about-content .main-content {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 40px;
-            margin-bottom: 60px;
-        }
-        #about-content .text-section {
-            flex: 1 1 500px;
-        }
-        #about-content .text-section h3 {
-            font-size: 1.8em;
-            margin: 30px 0 15px;
-            color: #e55a00;
-        }
-        #about-content .text-section p {
-            margin-bottom: 20px;
-            font-size: 1.1em;
-        }
-        #about-content .image-section {
-            flex: 1 1 400px;
-        }
-        #about-content .image-section img {
-            width: 100%;
-            border-radius: 8px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-        }
+    html { scroll-behavior: smooth; }
 
-        /* Vision Mission Values */
-        .vmv-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-top: 60px;
-        }
-        .vmv-item {
-            background: white;
-            padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            text-align: center;
-        }
-        .vmv-item i {
-            font-size: 3em;
-            color: #e55a00;
-            margin-bottom: 20px;
-        }
-        .vmv-item h3 {
-            font-size: 1.6em;
-            margin-bottom: 15px;
-        }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--cream);
+      color: var(--text);
+      overflow-x: hidden;
+    }
 
-        /* Branches Section */
-        #branches {
-            padding: 80px 0;
-            background: #ffffff;
-        }
-        #branches h2 {
-            text-align: center;
-            font-size: 2.5em;
-            margin-bottom: 50px;
-            color: #161515ff;
-        }
-        .branches-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-        }
-        .branch-card {
-            background: #f9f9f9;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-            text-align: center;
-        }
-        .branch-card img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-        }
-        .branch-card .content {
-            padding: 20px;
-        }
-        .branch-card h3 {
-            color: #e55a00;
-            margin-bottom: 10px;
-        }
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: var(--navy);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 5%;
+      height: 64px;
+    }
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      color: var(--white);
+      font-size: 1.35rem;
+      letter-spacing: .5px;
+    }
+    .nav-logo span { color: var(--gold); }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a {
+      color: rgba(255,255,255,.75);
+      text-decoration: none;
+      font-size: .875rem;
+      font-weight: 500;
+      transition: color .2s;
+    }
+    .nav-links a:hover, .nav-links a.active { color: var(--gold); }
+    .nav-cta {
+      background: var(--gold); color: var(--white);
+      padding: .5rem 1.25rem; border-radius: 4px;
+      font-size: .875rem; font-weight: 600;
+      text-decoration: none; transition: opacity .2s;
+    }
+    .nav-cta:hover { opacity: .85; }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
+    .hamburger span { display: block; width: 24px; height: 2px; background: var(--white); transition: .3s; }
 
-        /* Footer Styles - Updated with background image */
-        footer {
-            background: linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.41)),
-                        url('../photo/footer.png'); /* Change this path/name to your actual footer background image */
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed; /* Parallax effect - remove if not needed */
-            color: white;
-            padding: 80px 0 30px;
-            margin-top: 80px;
-            position: relative;
-        }
-        footer a {
-            color: #ffffff;
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-        footer a:hover {
-            color: #ff6b00;
-        }
-        .footer-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 40px;
-            margin-bottom: 50px;
-            position: relative;
-            z-index: 2;
-        }
-        .footer-column h3 {
-            font-size: 1.4em;
-            margin-bottom: 20px;
-            position: relative;
-            padding-bottom: 10px;
-        }
-        .footer-column h3::after {
-            content: '';
-            position: absolute;
-            width: 60px;
-            height: 3px;
-            background: #ff6b00;
-            bottom: 0;
-            left: 0;
-        }
-        .footer-column ul {
-            list-style: none;
-        }
-        .footer-column ul li {
-            margin-bottom: 10px;
-        }
-        .footer-column ul li i {
-            margin-right: 8px;
-            color: #ff6b00;
-        }
-        .newsletter-form {
-            display: flex;
-            margin-top: 15px;
-        }
-        .newsletter-form input {
-            flex: 1;
-            padding: 12px 15px;
-            border: none;
-            border-radius: 4px 0 0 4px;
-            font-size: 1em;
-        }
-        .newsletter-form button {
-            background: #ff6b00;
-            color: white;
-            border: none;
-            padding: 0 20px;
-            border-radius: 0 4px 4px 0;
-            cursor: pointer;
-            font-weight: bold;
-            transition: background 0.3s;
-        }
-        .newsletter-form button:hover {
-            background: #e55a00;
-        }
-        .social-icons {
-            margin-top: 20px;
-        }
-        .social-icons a {
-            font-size: 1.8em;
-            margin: 0 10px;
-            transition: transform 0.3s;
-        }
-        .social-icons a:hover {
-            transform: translateY(-5px);
-        }
-        .footer-bottom {
-            border-top: 1px solid rgba(255, 255, 255, 0.2);
-            padding-top: 20px;
-            text-align: center;
-            font-size: 0.95em;
-            position: relative;
-            z-index: 2;
-        }
+    /* ── HERO ── */
+    .hero {
+      margin-top: 64px;
+      background: linear-gradient(135deg, var(--navy) 55%, #1A3A5C 100%);
+      padding: 100px 5% 80px;
+      position: relative; overflow: hidden;
+    }
+    .hero::after {
+      content: '';
+      position: absolute; right: -80px; top: -80px;
+      width: 420px; height: 420px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(201,147,42,.18) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-inner { max-width: 760px; position: relative; }
+    .eyebrow {
+      display: inline-block;
+      color: var(--gold);
+      font-size: .78rem; font-weight: 600;
+      letter-spacing: 2.5px; text-transform: uppercase;
+      margin-bottom: 1.2rem;
+    }
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.4rem, 5vw, 3.8rem);
+      color: var(--white);
+      line-height: 1.18;
+      margin-bottom: 1.4rem;
+    }
+    .hero h1 em { color: var(--gold); font-style: normal; }
+    .hero p {
+      color: rgba(255,255,255,.72);
+      font-size: 1.05rem; line-height: 1.75;
+      max-width: 580px;
+      margin-bottom: 2.4rem;
+    }
+    .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .btn-primary {
+      background: var(--gold); color: var(--white);
+      padding: .75rem 1.8rem; border-radius: 4px;
+      font-weight: 600; font-size: .925rem;
+      text-decoration: none; transition: opacity .2s;
+    }
+    .btn-primary:hover { opacity: .85; }
+    .btn-outline {
+      border: 1.5px solid rgba(255,255,255,.45); color: var(--white);
+      padding: .75rem 1.8rem; border-radius: 4px;
+      font-weight: 500; font-size: .925rem;
+      text-decoration: none; transition: border-color .2s, color .2s;
+    }
+    .btn-outline:hover { border-color: var(--gold); color: var(--gold); }
 
-        /* Responsive */
-        @media (max-width: 768px) {
-            .hamburger { display: flex; }
-            nav ul { display: none; flex-direction: column; background: rgba(0,77,153,0.95); position: absolute; top: 100%; left: 0; width: 100%; }
-            nav ul.active { display: flex; }
-        }
-        @media (max-width: 480px) {
-            .newsletter-form { flex-direction: column; }
-            .newsletter-form input { border-radius: 4px; margin-bottom: 10px; }
-            .newsletter-form button { border-radius: 4px; }
-        }
-    </style>
+    /* ── STATS BAR ── */
+    .stats-bar {
+      background: var(--white);
+      display: flex; flex-wrap: wrap;
+      border-bottom: 3px solid var(--light);
+    }
+    .stat-item {
+      flex: 1 1 200px;
+      padding: 2rem 5%;
+      border-right: 1px solid var(--light);
+      text-align: center;
+    }
+    .stat-item:last-child { border-right: none; }
+    .stat-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.4rem; color: var(--navy);
+      line-height: 1;
+    }
+    .stat-num span { color: var(--gold); }
+    .stat-label { font-size: .82rem; color: var(--slate); margin-top: .4rem; text-transform: uppercase; letter-spacing: 1px; }
+
+    /* ── SECTIONS ── */
+    section { padding: 80px 5%; }
+    .section-label {
+      font-size: .75rem; color: var(--gold);
+      letter-spacing: 2.5px; text-transform: uppercase;
+      font-weight: 600; margin-bottom: .9rem;
+    }
+    h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.7rem, 3vw, 2.5rem);
+      color: var(--navy); line-height: 1.25;
+      margin-bottom: 1.2rem;
+    }
+    .lead {
+      color: var(--slate); font-size: 1.05rem;
+      line-height: 1.8; max-width: 640px;
+    }
+
+    /* ── MISSION / VISION ── */
+    .mv-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 2px; margin-top: 3rem;
+      border: 2px solid var(--light);
+    }
+    .mv-card {
+      background: var(--white);
+      padding: 2.5rem 2rem;
+      position: relative; overflow: hidden;
+    }
+    .mv-card::before {
+      content: '';
+      position: absolute; top: 0; left: 0;
+      width: 4px; height: 100%;
+      background: var(--gold);
+    }
+    .mv-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem; color: var(--navy);
+      margin-bottom: .9rem;
+    }
+    .mv-card p { color: var(--slate); font-size: .96rem; line-height: 1.75; }
+    .mv-icon { font-size: 2rem; margin-bottom: 1rem; }
+
+    /* ── VALUES ── */
+    .values-section { background: var(--navy); }
+    .values-section h2, .values-section .section-label { color: var(--white); }
+    .values-section .section-label { color: var(--gold); }
+    .values-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem; margin-top: 3rem;
+    }
+    .value-card {
+      background: rgba(255,255,255,.06);
+      border: 1px solid rgba(255,255,255,.1);
+      border-radius: 6px;
+      padding: 2rem 1.5rem;
+      transition: background .25s, transform .25s;
+    }
+    .value-card:hover {
+      background: rgba(201,147,42,.12);
+      transform: translateY(-4px);
+    }
+    .value-icon { font-size: 2rem; margin-bottom: 1rem; }
+    .value-card h3 {
+      font-size: 1rem; font-weight: 600;
+      color: var(--gold); margin-bottom: .6rem;
+    }
+    .value-card p { color: rgba(255,255,255,.65); font-size: .88rem; line-height: 1.65; }
+
+    /* ── BRANCHES ── */
+    .branches-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem; margin-top: 3rem;
+    }
+    .branch-card {
+      background: var(--white);
+      border: 1px solid var(--light);
+      border-radius: 6px;
+      overflow: hidden;
+      transition: box-shadow .25s, transform .25s;
+    }
+    .branch-card:hover { box-shadow: 0 12px 32px rgba(13,33,55,.1); transform: translateY(-4px); }
+    .branch-header {
+      background: var(--navy);
+      padding: 1.5rem 1.5rem 1.2rem;
+      display: flex; align-items: center; gap: 1rem;
+    }
+    .branch-badge {
+      width: 44px; height: 44px;
+      background: var(--gold); border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.2rem; flex-shrink: 0;
+    }
+    .branch-header h3 { color: var(--white); font-size: 1.1rem; font-weight: 600; }
+    .branch-header span { color: rgba(255,255,255,.55); font-size: .8rem; }
+    .branch-body { padding: 1.4rem 1.5rem; }
+    .branch-body p { color: var(--slate); font-size: .9rem; line-height: 1.65; margin-bottom: 1rem; }
+    .branch-tag {
+      display: inline-block;
+      background: var(--light); color: var(--navy);
+      font-size: .75rem; font-weight: 600;
+      padding: .2rem .65rem; border-radius: 20px;
+      margin: .2rem .2rem 0 0;
+    }
+
+    /* ── TEAM ── */
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2rem; margin-top: 3rem;
+    }
+    .team-card { text-align: center; }
+    .avatar {
+      width: 96px; height: 96px;
+      border-radius: 50%;
+      background: var(--light);
+      margin: 0 auto 1rem;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 2rem;
+      border: 3px solid var(--gold);
+      position: relative;
+      overflow: hidden;
+    }
+    .team-card h4 { font-size: 1rem; font-weight: 600; color: var(--navy); }
+    .team-card .role { font-size: .82rem; color: var(--gold); margin-top: .25rem; }
+    .team-card .bio { font-size: .85rem; color: var(--slate); margin-top: .6rem; line-height: 1.6; }
+
+    /* ── ACCREDITATION ── */
+    .accred-section { background: var(--white); }
+    .accred-strip {
+      display: flex; flex-wrap: wrap; gap: 1rem;
+      margin-top: 2.5rem;
+    }
+    .accred-badge {
+      display: flex; align-items: center; gap: .75rem;
+      padding: 1rem 1.5rem;
+      border: 1.5px solid var(--light);
+      border-radius: 6px;
+      background: var(--cream);
+      flex: 1 1 220px;
+      transition: border-color .2s;
+    }
+    .accred-badge:hover { border-color: var(--gold); }
+    .accred-badge .badge-icon { font-size: 1.8rem; }
+    .accred-badge h4 { font-size: .9rem; font-weight: 600; color: var(--navy); }
+    .accred-badge p { font-size: .78rem; color: var(--slate); margin-top: .15rem; }
+
+    /* ── TIMELINE ── */
+    .timeline { margin-top: 3rem; position: relative; padding-left: 2rem; }
+    .timeline::before {
+      content: '';
+      position: absolute; left: 0; top: 8px; bottom: 8px;
+      width: 2px; background: var(--light);
+    }
+    .tl-item { position: relative; padding-bottom: 2.5rem; }
+    .tl-item:last-child { padding-bottom: 0; }
+    .tl-dot {
+      position: absolute; left: -2rem;
+      width: 14px; height: 14px;
+      border-radius: 50%;
+      background: var(--gold);
+      border: 3px solid var(--cream);
+      top: 4px;
+    }
+    .tl-year { font-size: .75rem; font-weight: 700; color: var(--gold); letter-spacing: 1px; margin-bottom: .3rem; }
+    .tl-item h4 { font-size: 1rem; color: var(--navy); font-weight: 600; margin-bottom: .3rem; }
+    .tl-item p { font-size: .88rem; color: var(--slate); line-height: 1.65; }
+
+    /* ── CTA ── */
+    .cta-section {
+      background: linear-gradient(135deg, var(--gold) 0%, #A67320 100%);
+      text-align: center; padding: 80px 5%;
+    }
+    .cta-section h2 { color: var(--white); margin-bottom: 1rem; }
+    .cta-section p { color: rgba(255,255,255,.85); font-size: 1.05rem; max-width: 540px; margin: 0 auto 2rem; line-height: 1.75; }
+    .btn-white {
+      display: inline-block;
+      background: var(--white); color: var(--gold);
+      padding: .85rem 2.2rem; border-radius: 4px;
+      font-weight: 700; font-size: .95rem;
+      text-decoration: none; transition: opacity .2s;
+    }
+    .btn-white:hover { opacity: .9; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--navy); color: rgba(255,255,255,.55);
+      text-align: center; padding: 2rem 5%;
+      font-size: .82rem;
+    }
+    footer a { color: var(--gold); text-decoration: none; }
+
+    /* ── SCROLL REVEAL ── */
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity .6s ease, transform .6s ease; }
+    .reveal.visible { opacity: 1; transform: none; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      .nav-links, .nav-cta { display: none; }
+      .hamburger { display: flex; }
+      .nav-links.open {
+        display: flex; flex-direction: column;
+        position: absolute; top: 64px; left: 0; right: 0;
+        background: var(--navy);
+        padding: 1rem 5% 1.5rem;
+        gap: 1.2rem;
+      }
+      .mv-grid { grid-template-columns: 1fr; }
+      .hero-btns { flex-direction: column; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .reveal { opacity: 1; transform: none; transition: none; }
+    }
+  </style>
 </head>
 <body>
-    <!-- Header -->
-    <header id="header">
-        <div class="container nav-container">
-            <a href="index.html" class="logo">
-                <img src="../photo/logo.jpeg" alt="SkillPro Logo">
-                SkillPro Institute
-            </a>
-            <nav>
-                <ul id="navMenu">
-                    <li><a href="home.php" >Home</a></li>
-                    <li><a href="about.php"class="active">About</a></li>
-                    <li><a href="prospective.php">Prospective Students</a></li>
-                    <li><a href="faculties.php">Courses</a></li>
-                    <li><a href="international.php">International</a></li>
-                    <li><a href="research.php">Research</a></li>
-                    <li><a href="studentlife.php">Student life</a></li>
-                    <li><a href="professional.php">Professional Programmes</a></li>
-                    <li><a href="staff.php">Staff</a></li>
-                    <li><a href="login.php" class="login-btn">Login</a></li>
-                </ul>
-            </nav>
-            <div class="hamburger" id="hamburger">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-        </div>
-    </header>
 
-    <!-- Contact Bar -->
-    <div class="contact-bar">
-        <div class="container">
-            <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-            <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-            <a href="tel:+94117544801" aria-label="Phone"><i class="fas fa-phone-alt"></i></a>
-            <span class="phone-text">INQUIRIES? CALL: +94 11 754 4801</span>
-        </div>
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Skill<span>Pro</span> Institute</div>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#">Home</a></li>
+    <li><a href="#" class="active">About</a></li>
+    <li><a href="#">Courses</a></li>
+    <li><a href="#">Instructors</a></li>
+    <li><a href="#">Contact</a></li>
+  </ul>
+  <a href="#" class="nav-cta">Enroll Now</a>
+  <div class="hamburger" id="hamburger" aria-label="Toggle menu">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <span class="eyebrow">About SkillPro Institute</span>
+    <h1>Empowering Sri Lanka<br>Through <em>Skilled Futures</em></h1>
+    <p>Registered under TVEC, SkillPro Institute has been bridging the skills gap across Sri Lanka — equipping thousands of students with job-ready competencies in IT, engineering, hospitality, and more.</p>
+    <div class="hero-btns">
+      <a href="#courses" class="btn-primary">Explore Courses</a>
+      <a href="#branches" class="btn-outline">Our Branches</a>
     </div>
+  </div>
+</section>
 
-    <!-- About Hero -->
-    <section class="about-hero">
-        <div class="container">
-            <h2>About SkillPro Institute</h2>
+<!-- STATS -->
+<div class="stats-bar">
+  <div class="stat-item reveal">
+    <div class="stat-num" data-target="8500">0<span>+</span></div>
+    <div class="stat-label">Graduates</div>
+  </div>
+  <div class="stat-item reveal">
+    <div class="stat-num" data-target="40">0<span>+</span></div>
+    <div class="stat-label">Training Programs</div>
+  </div>
+  <div class="stat-item reveal">
+    <div class="stat-num" data-target="3">0</div>
+    <div class="stat-label">Branches Island-wide</div>
+  </div>
+  <div class="stat-item reveal">
+    <div class="stat-num" data-target="95">0<span>%</span></div>
+    <div class="stat-label">Employment Rate</div>
+  </div>
+</div>
+
+<!-- MISSION / VISION -->
+<section>
+  <div class="section-label reveal">Who We Are</div>
+  <h2 class="reveal">Our Mission &amp; Vision</h2>
+  <p class="lead reveal">We believe practical skills unlock opportunities. SkillPro Institute exists to make quality vocational education accessible to every Sri Lankan — from school leavers to working professionals seeking upskilling.</p>
+  <div class="mv-grid reveal">
+    <div class="mv-card">
+      <div class="mv-icon">🎯</div>
+      <h3>Our Mission</h3>
+      <p>To deliver high-quality, industry-aligned vocational training that enhances employability, supports national economic growth, and fosters lifelong learning across Sri Lanka.</p>
+    </div>
+    <div class="mv-card">
+      <div class="mv-icon">🔭</div>
+      <h3>Our Vision</h3>
+      <p>To be Sri Lanka's most trusted vocational training provider — recognized for our graduate outcomes, innovative programs, and commitment to inclusive, accessible education.</p>
+    </div>
+  </div>
+</section>
+
+<!-- VALUES -->
+<section class="values-section">
+  <div class="section-label">What Drives Us</div>
+  <h2>Our Core Values</h2>
+  <div class="values-grid">
+    <div class="value-card reveal">
+      <div class="value-icon">⚡</div>
+      <h3>Industry Relevance</h3>
+      <p>Every curriculum is co-designed with employers to ensure what students learn is what the market actually needs.</p>
+    </div>
+    <div class="value-card reveal">
+      <div class="value-icon">🤝</div>
+      <h3>Inclusivity</h3>
+      <p>We open doors regardless of background — offering flexible learning modes and financial support options.</p>
+    </div>
+    <div class="value-card reveal">
+      <div class="value-icon">📐</div>
+      <h3>Practical Excellence</h3>
+      <p>Hands-on labs, industry projects, and real-world case studies sit at the heart of every program.</p>
+    </div>
+    <div class="value-card reveal">
+      <div class="value-icon">🌱</div>
+      <h3>Continuous Growth</h3>
+      <p>We invest constantly in faculty development and curriculum updates to stay ahead of industry change.</p>
+    </div>
+    <div class="value-card reveal">
+      <div class="value-icon">🏅</div>
+      <h3>Integrity</h3>
+      <p>Transparent processes, honest communication, and ethical practice in everything we do.</p>
+    </div>
+    <div class="value-card reveal">
+      <div class="value-icon">🌐</div>
+      <h3>National Impact</h3>
+      <p>Our graduates contribute directly to Sri Lanka's workforce, economy, and communities.</p>
+    </div>
+  </div>
+</section>
+
+<!-- BRANCHES -->
+<section id="branches">
+  <div class="section-label reveal">Where We Are</div>
+  <h2 class="reveal">Three Branches, One Standard</h2>
+  <p class="lead reveal">Strategically located in Sri Lanka's key cities, each branch delivers the same quality programs with locally relevant industry connections.</p>
+  <div class="branches-grid">
+    <div class="branch-card reveal">
+      <div class="branch-header">
+        <div class="branch-badge">🏙️</div>
+        <div>
+          <h3>Colombo</h3>
+          <span>Western Province — Main Campus</span>
         </div>
-    </section>
-
-    <!-- About Content -->
-    <section id="about-content">
-        <div class="container">
-            <div class="header">
-                <h1>Who We Are</h1>
-            </div>
-            
-            <div class="main-content">
-                <div class="text-section">
-                    <p>SkillPro Institute is a premier Technical and Vocational Education and Training (TVET) provider in Sri Lanka, dedicated to bridging the skills gap and preparing individuals for successful careers in high-demand industries.</p>
-                    
-                    <h3>Our History</h3>
-                    <p>Established with a vision to empower Sri Lankan youth through practical, industry-aligned education, SkillPro Institute has grown to become a trusted name in vocational training. Registered under the Tertiary and Vocational Education Commission (TVEC), we adhere to national standards while continuously innovating our programs to meet evolving industry needs.</p>
-                    
-                    <h3>Our Commitment</h3>
-                    <p>We combine theoretical knowledge with extensive hands-on training in state-of-the-art facilities. Our curricula are developed in consultation with industry experts, ensuring graduates are job-ready and equipped with nationally recognized qualifications, including NVQ certifications.</p>
-                    
-                    <h3>Accessibility & Reach</h3>
-                    <p>With branches in Colombo, Kandy, and Matara, plus flexible online learning options, we make quality vocational education accessible across Sri Lanka.</p>
-                </div>
-                
-                <div class="image-section">
-                    <img src="../photo/image.png" alt="SkillPro Institute Campus">
-                </div>
-            </div>
-            
-            <!-- Vision, Mission, Values -->
-            <div class="vmv-grid">
-                <div class="vmv-item">
-                    <i class="fas fa-eye"></i>
-                    <h3>Our Vision</h3>
-                    <p>To be the leading TVET institute in Sri Lanka, producing highly skilled professionals who drive national economic growth and innovation.</p>
-                </div>
-                <div class="vmv-item">
-                    <i class="fas fa-bullseye"></i>
-                    <h3>Our Mission</h3>
-                    <p>To deliver excellence in vocational education through industry-relevant programs, experienced faculty, modern facilities, and a focus on employability and lifelong learning.</p>
-                </div>
-                <div class="vmv-item">
-                    <i class="fas fa-heart"></i>
-                    <h3>Core Values</h3>
-                    <p>Excellence | Integrity | Innovation | Inclusivity | Industry Partnership</p>
-                </div>
-            </div>
+      </div>
+      <div class="branch-body">
+        <p>Our flagship campus in the commercial capital, equipped with advanced IT labs, a simulation kitchen, and dedicated workshop spaces for engineering trades.</p>
+        <span class="branch-tag">ICT</span>
+        <span class="branch-tag">Hotel Management</span>
+        <span class="branch-tag">Plumbing</span>
+        <span class="branch-tag">Welding</span>
+      </div>
+    </div>
+    <div class="branch-card reveal">
+      <div class="branch-header">
+        <div class="branch-badge">🏔️</div>
+        <div>
+          <h3>Kandy</h3>
+          <span>Central Province</span>
         </div>
-    </section>
-
-    <!-- Branches Section -->
-    <section id="branches">
-        <div class="container">
-            <h2>Our Branches</h2>
-            <div class="branches-grid">
-                <div class="branch-card">
-                    <img src="../photo/colombo-branch.png" alt="Colombo Branch">
-                    <div class="content">
-                        <h3>Colombo Branch</h3>
-                        <p>Main campus with advanced workshops and labs for all programs.</p>
-                        <p><i class="fas fa-map-marker-alt"></i> Colombo, Sri Lanka</p>
-                    </div>
-                </div>
-                <div class="branch-card">
-                    <img src="../photo/kandy-branch.png" alt="Kandy Branch">
-                    <div class="content">
-                        <h3>Kandy Branch</h3>
-                        <p>Fully equipped facility serving the Central Province.</p>
-                        <p><i class="fas fa-map-marker-alt"></i> Kandy, Sri Lanka</p>
-                    </div>
-                </div>
-                <div class="branch-card">
-                    <img src="../photo/matara-branch.png" alt="Matara Branch">
-                    <div class="content">
-                        <h3>Matara Branch</h3>
-                        <p>Modern training center for Southern Province students.</p>
-                        <p><i class="fas fa-map-marker-alt"></i> Matara, Sri Lanka</p>
-                    </div>
-                </div>
-            </div>
+      </div>
+      <div class="branch-body">
+        <p>Serving the central highlands, our Kandy branch focuses on tourism and hospitality alongside technical trades, supporting the region's thriving visitor economy.</p>
+        <span class="branch-tag">Tourism</span>
+        <span class="branch-tag">Hospitality</span>
+        <span class="branch-tag">Engineering</span>
+        <span class="branch-tag">ICT</span>
+      </div>
+    </div>
+    <div class="branch-card reveal">
+      <div class="branch-header">
+        <div class="branch-badge">🌊</div>
+        <div>
+          <h3>Matara</h3>
+          <span>Southern Province</span>
         </div>
-    </section>
+      </div>
+      <div class="branch-body">
+        <p>Our southern campus connects graduates with the region's growing port-adjacent industries and tourism sector, creating pathways to meaningful local employment.</p>
+        <span class="branch-tag">Marine Engineering</span>
+        <span class="branch-tag">ICT</span>
+        <span class="branch-tag">Welding</span>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <!-- Footer - with background image -->
-    <footer>
-        <div class="container">
-            <div class="footer-grid">
-                <!-- About -->
-                <div class="footer-column">
-                    <h3>🏫 About SkillPro Institute</h3>
-                    <p>SkillPro Institute is a recognized Technical and Vocational Education and Training (TVET) institute registered under the Tertiary and Vocational Education Commission (TVEC) of Sri Lanka. We are committed to delivering industry-oriented training programs that empower individuals with practical skills, professional competence, and career readiness.</p>
-                    <p>Our training programs are designed in alignment with national vocational standards and industry requirements, ensuring high employability and career progression opportunities for our students. SkillPro Institute offers both online and on-site learning modes through its branches in Colombo, Kandy, and Matara.</p>
-                    
-                    <div class="social-icons">
-                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
-                    </div>
-                </div>
+<!-- TEAM -->
+<section style="background:var(--white);">
+  <div class="section-label reveal">The People Behind It</div>
+  <h2 class="reveal">Meet Our Leadership</h2>
+  <div class="team-grid">
+    <div class="team-card reveal">
+      <div class="avatar">👩‍💼</div>
+      <h4>Dr. Priya Jayawardena</h4>
+      <div class="role">Director General</div>
+      <p class="bio">20+ years in vocational education policy. Former TVEC board member passionate about closing Sri Lanka's skills gap.</p>
+    </div>
+    <div class="team-card reveal">
+      <div class="avatar">👨‍🏫</div>
+      <h4>Mr. Rohan Perera</h4>
+      <div class="role">Head of ICT Programs</div>
+      <p class="bio">MSc Computer Science, University of Moratuwa. Industry practitioner with ties to the Colombo tech ecosystem.</p>
+    </div>
+    <div class="team-card reveal">
+      <div class="avatar">👩‍🍳</div>
+      <h4>Ms. Niluka Fernando</h4>
+      <div class="role">Head of Hospitality</div>
+      <p class="bio">Certified by the Sri Lanka Tourism Development Authority with 15 years in five-star hotel operations.</p>
+    </div>
+    <div class="team-card reveal">
+      <div class="avatar">👨‍🔧</div>
+      <h4>Mr. Chamara Silva</h4>
+      <div class="role">Head of Engineering Trades</div>
+      <p class="bio">Chartered Engineer and former NAITA instructor dedicated to hands-on, industry-standard technical training.</p>
+    </div>
+  </div>
+</section>
 
-                <!-- Programmes -->
-                <div class="footer-column">
-                    <h3>📚 Programmes</h3>
-                    <ul>
-                        <li><i class="fas fa-chevron-right"></i> Information & Communication Technology (ICT)</li>
-                        <li><i class="fas fa-chevron-right"></i> Plumbing & Pipe Fitting</li>
-                        <li><i class="fas fa-chevron-right"></i> Welding & Fabrication Technology</li>
-                        <li><i class="fas fa-chevron-right"></i> Electrical Installation</li>
-                        <li><i class="fas fa-chevron-right"></i> Hotel & Hospitality Management</li>
-                        <li><i class="fas fa-chevron-right"></i> Automobile Technology</li>
-                        <li><i class="fas fa-chevron-right"></i> Business & Office Management</li>
-                        <li><i class="fas fa-chevron-right"></i> Soft Skills & Professional Development</li>
-                    </ul>
-                </div>
+<!-- ACCREDITATION -->
+<section class="accred-section">
+  <div class="section-label reveal">Recognition</div>
+  <h2 class="reveal">Accreditation &amp; Partnerships</h2>
+  <p class="lead reveal">Our programs are nationally recognized and industry-validated, giving graduates credentials that employers trust.</p>
+  <div class="accred-strip">
+    <div class="accred-badge reveal">
+      <div class="badge-icon">🏛️</div>
+      <div>
+        <h4>TVEC Registered</h4>
+        <p>Tertiary &amp; Vocational Education Commission</p>
+      </div>
+    </div>
+    <div class="accred-badge reveal">
+      <div class="badge-icon">🎓</div>
+      <div>
+        <h4>NVQ Certified</h4>
+        <p>National Vocational Qualifications Framework</p>
+      </div>
+    </div>
+    <div class="accred-badge reveal">
+      <div class="badge-icon">🏭</div>
+      <div>
+        <h4>Industry Partners</h4>
+        <p>Collaborations with 30+ leading employers</p>
+      </div>
+    </div>
+    <div class="accred-badge reveal">
+      <div class="badge-icon">🌍</div>
+      <div>
+        <h4>International Recognition</h4>
+        <p>City &amp; Guilds affiliated programs</p>
+      </div>
+    </div>
+  </div>
+</section>
 
-                <!-- Facilities & Events -->
-                <div class="footer-column">
-                    <h3>🏢 Facilities</h3>
-                    <ul>
-                        <li><i class="fas fa-chevron-right"></i> Modern Training Labs & Workshops</li>
-                        <li><i class="fas fa-chevron-right"></i> Online Learning Platform</li>
-                        <li><i class="fas fa-chevron-right"></i> Qualified & Industry-Experienced Instructors</li>
-                        <li><i class="fas fa-chevron-right"></i> Student Support & Career Guidance</li>
-                        <li><i class="fas fa-chevron-right"></i> Certification Assistance (TVEC / NVQ)</li>
-                    </ul>
+<!-- TIMELINE -->
+<section>
+  <div class="section-label reveal">Our Journey</div>
+  <h2 class="reveal">A Decade of Skill Building</h2>
+  <div class="timeline">
+    <div class="tl-item reveal">
+      <div class="tl-dot"></div>
+      <div class="tl-year">2013</div>
+      <h4>Founded in Colombo</h4>
+      <p>SkillPro Institute opened its doors with 3 programs and 120 students, registered under TVEC.</p>
+    </div>
+    <div class="tl-item reveal">
+      <div class="tl-dot"></div>
+      <div class="tl-year">2016</div>
+      <h4>Kandy Branch Launch</h4>
+      <p>Expanded to the Central Province, introducing tourism and hospitality programs tailored to the region.</p>
+    </div>
+    <div class="tl-item reveal">
+      <div class="tl-dot"></div>
+      <div class="tl-year">2019</div>
+      <h4>Matara Campus &amp; NVQ Partnership</h4>
+      <p>Opened our southern campus and secured full NVQ certification across all engineering programs.</p>
+    </div>
+    <div class="tl-item reveal">
+      <div class="tl-dot"></div>
+      <div class="tl-year">2022</div>
+      <h4>Online Learning Platform</h4>
+      <p>Launched hybrid learning options, enabling students across the island to access SkillPro programs remotely.</p>
+    </div>
+    <div class="tl-item reveal">
+      <div class="tl-dot"></div>
+      <div class="tl-year">2025</div>
+      <h4>Digital Transformation</h4>
+      <p>Launched our full web application — enabling online registration, student portals, and digital course management.</p>
+    </div>
+  </div>
+</section>
 
-                    <h3 style="margin-top: 30px;">📅 Main Events</h3>
-                    <ul>
-                        <li><i class="fas fa-star"></i> SkillFest</li>
-                        <li><i class="fas fa-star"></i> TechExpo</li>
-                        <li><i class="fas fa-star"></i> Trade Skills Championship</li>
-                        <li><i class="fas fa-star"></i> Career Development Week</li>
-                    </ul>
-                </div>
+<!-- CTA -->
+<section class="cta-section">
+  <h2 class="reveal">Ready to Build Your Future?</h2>
+  <p class="reveal">Join over 8,500 SkillPro graduates who have transformed their careers with nationally recognised qualifications.</p>
+  <a href="#" class="btn-white reveal">Browse All Courses</a>
+</section>
 
-                <!-- Student Life & Quick Links & Newsletter -->
-                <div class="footer-column">
-                    <h3>🎓 Student Life</h3>
-                    <ul>
-                        <li><i class="fas fa-chevron-right"></i> Career Guidance & Counseling</li>
-                        <li><i class="fas fa-chevron-right"></i> Clubs & Skill Societies</li>
-                        <li><i class="fas fa-chevron-right"></i> Student Workshops & Competitions</li>
-                        <li><i class="fas fa-chevron-right"></i> Student Accommodation Support</li>
-                        <li><i class="fas fa-chevron-right"></i> Sports & Recreational Activities</li>
-                    </ul>
+<!-- FOOTER -->
+<footer>
+  <p>© 2025 SkillPro Institute. Registered under TVEC, Sri Lanka. | Colombo · Kandy · Matara</p>
+  <p style="margin-top:.5rem;">Developed for CSE5009 Web Application Development — <a href="#">ICBT Campus</a></p>
+</footer>
 
-                    <h3 style="margin-top: 30px;">🔗 Quick Links</h3>
-                    <ul>
-                        <li><a href="#"><i class="fas fa-link"></i> Guidelines for Visitors</a></li>
-                        <li><a href="#"><i class="fas fa-link"></i> Instructor Login</a></li>
-                        <li><a href="#"><i class="fas fa-link"></i> Student Login</a></li>
-                        <li><a href="#"><i class="fas fa-link"></i> Careers at SkillPro</a></li>
-                        <li><a href="#"><i class="fas fa-link"></i> Virtual Tour</a></li>
-                        <li><a href="#"><i class="fas fa-link"></i> Sitemap</a></li>
-                    </ul>
+<script>
+  // Hamburger menu
+  const hamburger = document.getElementById('hamburger');
+  const navLinks  = document.getElementById('navLinks');
+  hamburger.addEventListener('click', () => {
+    navLinks.classList.toggle('open');
+  });
 
-                    <h3 style="margin-top: 30px;">📩 Subscribe Our Newsletter</h3>
-                    <p>Stay updated with upcoming courses, new batches, workshops, and events.</p>
-                    <form class="newsletter-form">
-                        <input type="email" placeholder="Enter Your Email" required>
-                        <button type="submit">Submit</button>
-                    </form>
-                </div>
-            </div>
+  // Scroll reveal
+  const revealEls = document.querySelectorAll('.reveal');
+  const observer  = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  revealEls.forEach(el => observer.observe(el));
 
-           
-        </div>
-    </footer>
+  // Animated counters
+  function animateCounter(el) {
+    const target = parseInt(el.dataset.target, 10);
+    const suffix = el.querySelector('span') ? el.querySelector('span').outerHTML : '';
+    const duration = 1400;
+    const start = performance.now();
+    function step(now) {
+      const progress = Math.min((now - start) / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      const current = Math.round(eased * target);
+      el.innerHTML = current.toLocaleString() + suffix;
+      if (progress < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
 
-    <script>
-        // Hamburger Menu
-        const hamburger = document.getElementById('hamburger');
-        const navMenu = document.getElementById('navMenu');
-        hamburger.addEventListener('click', () => {
-            navMenu.classList.toggle('active');
-        });
-    </script>
+  const statNums = document.querySelectorAll('.stat-num[data-target]');
+  const statObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        animateCounter(entry.target);
+        statObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.5 });
+  statNums.forEach(el => statObserver.observe(el));
+</script>
 </body>
 </html>
