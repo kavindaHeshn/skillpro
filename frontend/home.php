@@ -215,7 +215,7 @@
         #welcome .glance-number {
             font-size: 3em;
             font-weight: bold;
-            color: #d27913ff;
+            color: rgb(19, 210, 48);
         }
 
         /* Courses Section */
