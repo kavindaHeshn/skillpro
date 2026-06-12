@@ -17,6 +17,7 @@
         html{scroll-behavior:smooth;}
         body{font-family:'Inter',sans-serif;color:var(--text);background:var(--bg);line-height:1.6;overflow-x:hidden;}
 
+<<<<<<< HEAD
         /* TOPBAR */
         .topbar{background:var(--primary);position:fixed;top:0;left:0;right:0;z-index:1001;}
         .topbar-inner{max-width:1280px;margin:0 auto;padding:7px 32px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;}
@@ -26,6 +27,73 @@
         .topbar-social{display:flex;gap:12px;}
         .topbar-social a{color:rgba(255,255,255,0.8);text-decoration:none;font-size:0.75rem;font-weight:700;transition:color 0.2s;}
         .topbar-social a:hover{color:#fff;}
+=======
+        /* Welcome Section */
+        #welcome {
+            padding: 80px 0;
+            background-color: #231e0c37;
+        }
+        #welcome .header {
+            background-color: #e55a00;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            border-radius: 8px;
+            margin-bottom: 30px;
+        }
+        #welcome .main-content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+        #welcome .image-section {
+            flex: 1 1 350px;
+        }
+        #welcome .image-section img {
+            width: 100%;
+            border-radius: 8px;
+        }
+        #welcome .text-section {
+            flex: 1 1 400px;
+        }
+        #welcome .quote {
+            background-color: #f0bc41ff;
+            color: white;
+            padding: 30px;
+            margin-top: 30px;
+            border-radius: 8px;
+            position: relative;
+        }
+        #welcome .quote::before {
+            content: "“";
+            font-size: 80px;
+            opacity: 0.3;
+            position: absolute;
+            top: 10px;
+            left: 20px;
+        }
+        #welcome .glance {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 60px;
+        }
+        #welcome .glance-item {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            text-align: center;
+            flex: 1 1 180px;
+            min-width: 180px;
+        }
+        #welcome .glance-number {
+            font-size: 3em;
+            font-weight: bold;
+            color: rgb(19, 210, 48);
+        }
+>>>>>>> d20e049b8091e01f52d1947d966c906deef8a8bf
 
         /* HEADER */
         header{position:fixed;top:34px;left:0;right:0;z-index:1000;background:rgba(15,14,13,0.97);backdrop-filter:blur(12px);border-bottom:1px solid rgba(255,255,255,0.07);transition:all 0.3s;}
@@ -218,6 +286,37 @@
     </style>
 </head>
 <body>
+<<<<<<< HEAD
+=======
+    <!-- Header -->
+    <header id="header">
+        <div class="container nav-container">
+            <a href="#home" class="logo">
+                <img src="../photo/logo.png" alt="SkillPro Logo">
+                SkillPro Institute
+            </a>
+            <nav>
+                <ul id="navMenu">
+                    <li><a href="home.php" class="active">Home</a></li>
+                    <li><a href="about.php">About</a></li>
+                    <li><a href="prospective.php">Prospective Students</a></li>
+                    <li><a href="faculties.php">Courses</a></li>
+                    <li><a href="international.php">International</a></li>
+                    <li><a href="research.php">Research</a></li>
+                    <li><a href="studentlife.php">Student life</a></li>
+                    <li><a href="professional.php">Professional Programmes</a></li>
+                    <li><a href="staff.php">Staff</a></li>
+                    <li><a href="signup.php" class="login-btn">Login</a></li>
+                </ul>
+            </nav>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </header>
+>>>>>>> d20e049b8091e01f52d1947d966c906deef8a8bf
 
 <!-- TOPBAR -->
 <div class="topbar">
