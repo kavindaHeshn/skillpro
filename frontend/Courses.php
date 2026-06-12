@@ -593,7 +593,7 @@ function renderCards() {
   }
 
   grid.innerHTML = filtered.map(c => `
-    <div class="course-card reveal" data-id="${c.id}">
+    <div class="course-card reveal" data-id="${c.id}" style="cursor:pointer;" onclick="window.location='course-detail.html?id=${c.id}'">
       <div class="card-thumb" style="background:${c.thumb}">
         <span>${c.icon}</span>
         ${c.isNew ? '<span class="badge-new">NEW</span>' : ''}
@@ -610,7 +610,10 @@ function renderCards() {
         </div>
         <div class="card-footer">
           <div class="card-fee">${c.fee}<small>per program</small></div>
-          <button class="btn-enroll" data-id="${c.id}">Enroll Now</button>
+          <div style="display:flex;gap:.5rem;">
+            <a href="course-detail.html?id=${c.id}" class="btn-details" onclick="event.stopPropagation()">Details</a>
+            <button class="btn-enroll" data-id="${c.id}" onclick="event.stopPropagation()">Enroll Now</button>
+          </div>
         </div>
       </div>
     </div>
