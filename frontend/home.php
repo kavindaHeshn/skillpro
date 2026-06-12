@@ -448,7 +448,7 @@
                     <li><a href="studentlife.php">Student life</a></li>
                     <li><a href="professional.php">Professional Programmes</a></li>
                     <li><a href="staff.php">Staff</a></li>
-                    <li><a href="login.php" class="login-btn">Login</a></li>
+                    <li><a href="signup.php" class="login-btn">Login</a></li>
                 </ul>
             </nav>
             <div class="hamburger" id="hamburger">
