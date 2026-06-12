@@ -359,11 +359,11 @@
 <nav>
   <div class="nav-logo">Skill<span>Pro</span> Institute</div>
   <ul class="nav-links" id="navLinks">
-    <li><a href="#">Home</a></li>
-    <li><a href="#" class="active">About</a></li>
-    <li><a href="#">Courses</a></li>
-    <li><a href="#">Instructors</a></li>
-    <li><a href="#">Contact</a></li>
+    <li><a href="Home.php">Home</a></li>
+    <li><a href="About.php" class="active">About</a></li>
+    <li><a href="Courses.php">Courses</a></li>
+    <li><a href="Instructors.php">Instructors</a></li>
+    <li><a href="Contact.php">Contact</a></li>
   </ul>
   <a href="#" class="nav-cta">Enroll Now</a>
   <div class="hamburger" id="hamburger" aria-label="Toggle menu">
