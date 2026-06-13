@@ -91,7 +91,7 @@ body{
 
         <div class="link">
             Don't have an account?
-            <a href="signup.php">Sign Up</a>
+            <a href="sign.php">Sign Up</a>
         </div>
 
     </form>
